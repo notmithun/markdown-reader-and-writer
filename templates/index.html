@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <script src="/assets/marked.min.js"></script>
+    <script src="/assets/jquery-3.7.1.min.js"></script>
+    <link href="/assets/bootstrap.min.css" rel="stylesheet">
+    <noscript>
+        <h1 class="text-danger fw-bolder">THIS WEBSITE NEEDS JAVASCRIPT TO RUN. PLEASE ENABLE IT IN SETTINGS.</h1>
+    </noscript>
+</head>
+
+<body id="body" class="container-fluid bg-light text-dark">
+<h1 class="text-center">Markdown Viewer and Reader</h1> <img style="width: 32px; height: 32px" onclick="toggleDarkMode()" id="mode_btn" class="float-end" src="/assets/dark_mode_icon.png" alt="Light mode icon">
+<label for="choose_file">Open a file:</label>
+<br>
+<br>
+<input type="file" id="choose_file" name="choose_file">
+<br>
+<br>
+<button class="btn btn-primary" id="choose_file_submit">Read!</button>
+<pre id="markdown_reader"></pre>
+<script>
+    $("#choose_file_submit").on('click', function () {
+        const file = document.getElementById("choose_file").files[0];
+        console.info(file)
+        if (file) {
+            console.log(`File chosen: ${file.name}, Size: ${file.size} bytes`);
+            // Call a function with the file as an argument
+            loadMarkdown(file)
+        } else {
+            console.error('No file chosen.');
+            alert("No file was chosen.")
+        }
+    })
+</script>
+<script src="/assets/libary.js"></script>
+<script src="/assets/bootstrap.bundle.min.js"></script>
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+        <span id="spn" class="mb-3 mb-md-0 text-body-secondary">© 2024 Mithun Kumar</span>
+    </div>
+</footer>
+<span class="text-body-secondary">Credits:
+    Dark mode icon: <a href="https://www.flaticon.com/free-icons/mode" title="mode icons">Mode icons created by adriansyah - Flaticon</a>
+    <br/>
+    Light mode icon: <a href="https://www.flaticon.com/free-icons/light-mode" title="light mode icons">Light mode icons created by bsd - Flaticon</a></span>
+</body>
+
+</html>
