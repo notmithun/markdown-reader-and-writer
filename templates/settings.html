@@ -1,10 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link href="/assets/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            background-color: #343a40;
+            color: white;
+        }
+
+        .sidebar .btn {
+            color: white;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar .btn:hover {
+            background-color: #495057;
+        }
+
+        .icon-large {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
-<body>
-$END$
+{%if dm%}
+<body id="body" class="bg-dark text-light">
+{%else%}
+<body id="body" class="bg-light text-dark"></body>
+{%endif%}
+
+<div class="sidebar d-flex flex-column justify-between">
+    <div class="flex-grow-1 px-2">
+        <button onclick="window.location.href = '/reader'" class="btn d-flex align-items-center my-3">
+            <i class="bi bi-book icon-large me-3"></i>
+            <span>Reader</span>
+        </button>
+        <button class="btn d-flex align-items-center my-3">
+            <i class="bi bi-code-slash icon-large me-3"></i>
+            <span>Writer</span>
+        </button>
+    </div>
+    <div class="px-2 mb-3">
+        <a href="settings.html" class="btn d-flex align-items-center">
+            <i class="bi bi-gear icon-large me-3"></i>
+            <span>Settings</span>
+        </a>
+    </div>
+</div>
+
+<div class="content" style="margin-left: 250px;">
+    <div class="container py-4">
+        <h1 class="text-3xl">Settings</h1>
+        <div class="form-check form-switch mt-4">
+            <label class="form-check-label" for="dark-mode-toggle">Dark Mode</label>
+            {%if dm%}
+            <button id="dark-mode-toggle" class="btn-primary" onclick="window.location.href = '/togglelightmode'">Light Mode</button>
+            {%else%}
+            <button onclick="window.location.href = '/toggledarkmode'">Dark Mode</button>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+<script src="/assets/bootstrap.bundle.min.js"></script>
 </body>
 </html>
